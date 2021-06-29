@@ -3,11 +3,11 @@ WORKDIR /app
 COPY Api.csproj .
 RUN dotnet restore --disable-parallel 
 COPY . .
-RUN dotnet build --disable-parallel --configuration Release -o /app/build
+RUN dotnet build --configuration Release -o build
 
 
 FROM build AS publish
-RUN dotnet publish --disable-parallel --no-restore -c Release -o out
+RUN dotnet publish --no-restore -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS final
 WORKDIR /app
