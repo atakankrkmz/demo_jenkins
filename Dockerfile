@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
 COPY Api.csproj .
 RUN dotnet restore --disable-parallel 
-COPY . ./
+COPY . .
 RUN dotnet build --disable-parallel --configuration Release -o /app/build
 
 
