@@ -3,7 +3,8 @@ WORKDIR /app
 COPY Api.csproj .
 RUN dotnet restore
 COPY . ./
-RUN dotnet build "Api.csproj" -c Release -o /app/build
+RUN dotnet build --configuration Release -o /app/build
+
 
 FROM build AS publish
 RUN dotnet publish --no-restore -c Release -o out
